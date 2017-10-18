@@ -18,17 +18,40 @@ class TimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ダーミデータの生成
-        let user = User(id: "1", screenName: "tkdwnszoq", name: "전상준", profileImageURL: "https://pbs.twimg.com/media/COmjW9LUkAA21g8.jpg")
-        let tweet = Tweet(id: "01", text: "Twitterを作ってみましょう。", user: user)
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        let tweets = [tweet]
-        self.tweets = tweets
-        
-        // tableViewのリロード
-        tableView.reloadData()
+        LoginCommunicator().login() { isSuccess in
+            switch isSuccess {
+            case false:
+                print("ログイン失敗")
+            case true:
+                print("ログイン成功")
+                
+            TwitterCommunicator().getTimeline() { [weak self] data, error in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                print(data)
+                let timelineParset = TimelineParser()
+                let tweets = timelineParset.parse(data: data!)
+                
+                print(tweets)
+                
+                self?.tweets = tweets
+                
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                }
+            }
+        }
     }
 }
+
 
 extension TimelineViewController: UITableViewDelegate {
     
