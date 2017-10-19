@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1xA-DE-uFz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1xA-DE-uFz">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -25,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="147"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dUl-Ah-6xc" id="CqF-iD-NQn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O95-Sl-P5M">
@@ -47,8 +49,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitterを作ってみましょう。ここは本文です。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-uK-DC2">
-                                                    <rect key="frame" x="66" y="58" width="301" height="41"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Twitterを作ってみましょう。ここは本文です。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-uK-DC2">
+                                                    <rect key="frame" x="66" y="58" width="301" height="72.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,6 +63,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Ysh-T4-1dp" secondAttribute="trailing" constant="8" id="YRv-FM-CIM"/>
                                                 <constraint firstItem="gAC-uK-DC2" firstAttribute="top" secondItem="Ysh-T4-1dp" secondAttribute="bottom" constant="8" id="bHa-SN-19K"/>
                                                 <constraint firstItem="Ysh-T4-1dp" firstAttribute="leading" secondItem="O95-Sl-P5M" secondAttribute="trailing" constant="8" id="hJG-9n-4YX"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gAC-uK-DC2" secondAttribute="bottom" constant="8" id="jCs-aP-qnL"/>
                                                 <constraint firstItem="gAC-uK-DC2" firstAttribute="leading" secondItem="O95-Sl-P5M" secondAttribute="trailing" constant="8" id="p3k-mD-Q8A"/>
                                                 <constraint firstItem="Ysh-T4-1dp" firstAttribute="top" secondItem="f8u-XV-b26" secondAttribute="bottom" id="sNh-SW-rVr"/>
                                                 <constraint firstItem="O95-Sl-P5M" firstAttribute="top" secondItem="CqF-iD-NQn" secondAttribute="top" constant="8" id="vg4-d3-JWB"/>
@@ -71,12 +74,15 @@
                                         <connections>
                                             <outlet property="iconImageView" destination="O95-Sl-P5M" id="isE-YB-V5D"/>
                                             <outlet property="nameLabel" destination="f8u-XV-b26" id="z9j-mv-wyF"/>
-                                            <outlet property="nameLavel" destination="f8u-XV-b26" id="Clb-uO-uBF"/>
                                             <outlet property="screenNameLabel" destination="Ysh-T4-1dp" id="04y-j6-LgO"/>
                                             <outlet property="textContentLabel" destination="gAC-uK-DC2" id="3CV-FB-bop"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="p9l-hp-CgR"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mEv-Se-1ah"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
